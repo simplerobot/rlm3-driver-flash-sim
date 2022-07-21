@@ -1,7 +1,6 @@
 GITHUB_DEPS += simplerobot/build-scripts
 GITHUB_DEPS += simplerobot/logger
 GITHUB_DEPS += simplerobot/test
-GITHUB_DEPS += simplerobot/mock
 GITHUB_DEPS += simplerobot/rlm3-sim-base
 include ../build-scripts/build/release/include.make
 
@@ -19,7 +18,7 @@ CFLAGS = -Wall -Werror -DTEST -fsanitize=address -static-libasan -g -Og
 
 LIBRARY_FILES = $(notdir $(wildcard $(MAIN_SOURCE_DIR)/*))
 
-TEST_SOURCE_DIRS = $(MAIN_SOURCE_DIR) $(TEST_SOURCE_DIR) $(PKG_LOGGER_DIR)  $(PKG_TEST_DIR) $(PKG_MOCK_DIR) $(PKG_RLM3_SIM_BASE_DIR)
+TEST_SOURCE_DIRS = $(MAIN_SOURCE_DIR) $(TEST_SOURCE_DIR) $(PKG_LOGGER_DIR) $(PKG_TEST_DIR) $(PKG_RLM3_SIM_BASE_DIR)
 TEST_SOURCE_FILES = $(notdir $(wildcard $(TEST_SOURCE_DIRS:%=%/*.cpp) $(TEST_SOURCE_DIRS:%=%/*.c)))
 TEST_O_FILES = $(addsuffix .o,$(basename $(TEST_SOURCE_FILES)))
 TEST_INCLUDES = $(TEST_SOURCE_DIRS:%=-I%)
